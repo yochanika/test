@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>備品管理システム</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-boxes"></i> 備品管理システム</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="addItemBtn">
+                        <i class="fas fa-plus"></i> 備品追加
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="備品名で検索..." class="search-input">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="filter-container">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">すべてのカテゴリ</option>
+                        <option value="オフィス用品">オフィス用品</option>
+                        <option value="IT機器">IT機器</option>
+                        <option value="家具">家具</option>
+                        <option value="その他">その他</option>
+                    </select>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">すべてのステータス</option>
+                        <option value="利用可能">利用可能</option>
+                        <option value="使用中">使用中</option>
+                        <option value="メンテナンス">メンテナンス</option>
+                        <option value="故障">故障</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="items-grid" id="itemsGrid">
+                <!-- 備品カードがここに動的に追加されます -->
+            </div>
+        </main>
+
+        <!-- モーダル -->
+        <div id="itemModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">備品追加</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="itemForm">
+                    <div class="form-group">
+                        <label for="itemName">備品名</label>
+                        <input type="text" id="itemName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCategory">カテゴリ</label>
+                        <select id="itemCategory" required>
+                            <option value="">選択してください</option>
+                            <option value="オフィス用品">オフィス用品</option>
+                            <option value="IT機器">IT機器</option>
+                            <option value="家具">家具</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemStatus">ステータス</label>
+                        <select id="itemStatus" required>
+                            <option value="利用可能">利用可能</option>
+                            <option value="使用中">使用中</option>
+                            <option value="メンテナンス">メンテナンス</option>
+                            <option value="故障">故障</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemLocation">保管場所</label>
+                        <input type="text" id="itemLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemDescription">説明</label>
+                        <textarea id="itemDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemQuantity">数量</label>
+                        <input type="number" id="itemQuantity" min="1" value="1" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelBtn">キャンセル</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
